@@ -1,70 +1,151 @@
-# Getting Started with Create React App
+﻿# Twitch+ | Personalized Twitch Resource Recommendation Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Twitch+ is a full-stack Twitch resource recommendation platform with a React frontend (`twitch-fe`) and a Spring Boot backend (`twitch-be`).
+It supports searching and personalized ranking for Twitch streams, videos, and clips.
 
-## Available Scripts
+## What This Project Is
 
-In the project directory, you can run:
+- A full-stack personalized recommendation platform for Twitch content discovery
+- Supports searching Twitch resources such as streams, videos, and clips
+- Provides backend APIs, user authentication, and favorites management
+- Organized as a single repository with separate frontend and backend modules
 
-### `npm start`
+## What I Worked On
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Built a full-stack recommendation system using Java, Spring Boot, React, and MySQL
+- Implemented search and personalized ranking for Twitch streams, videos, and clips
+- Developed RESTful backend APIs with Spring Boot and integrated Twitch APIs using OpenFeign
+- Implemented authentication and authorization with Spring Security
+- Designed relational persistence for users and favorites using Spring Data JDBC and MySQL (AWS RDS)
+- Structured the project as a single repo (`twitch-fe` + `twitch-be`) for local development and deployment
+- Containerized and deployed the application using Docker and AWS App Runner
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+### Frontend (`twitch-fe`)
+- React
+- Create React App (`react-scripts`)
+- Ant Design (`antd`)
+- JavaScript
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend (`twitch-be`)
+- Java 21
+- Spring Boot 3
+- Spring Security
+- Spring Web
+- Spring Data JDBC
+- OpenFeign
+- Gradle
+- MySQL (AWS RDS)
 
-### `npm run build`
+### Deployment / Infra
+- Docker
+- AWS App Runner
+- AWS RDS
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Search Twitch resources (streams, videos, and clips)
+- Personalized ranking / recommendation flow
+- User authentication and authorization
+- Favorites management with relational persistence
+- Frontend-backend integration through REST APIs
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Structure
 
-### `npm run eject`
+```text
+.
+├─ twitch-fe/   # React frontend project
+├─ twitch-be/   # Spring Boot backend project
+├─ .gitignore
+└─ README.md
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## How To Run Locally
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. Clone the repository
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+git clone https://github.com/<your-username>/twitch-plus.git
+cd twitchfe
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### 2. Run the frontend
 
-## Learn More
+```bash
+cd twitch-fe
+npm install
+npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Frontend default URL: `http://localhost:3000`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 3. Run the backend (Gradle)
 
-### Code Splitting
+Windows:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```bash
+cd twitch-be
+.\gradlew.bat bootRun
+```
 
-### Analyzing the Bundle Size
+macOS / Linux:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+cd twitch-be
+./gradlew bootRun
+```
 
-### Making a Progressive Web App
+Backend default URL: `http://localhost:8080`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Configuration Notes
 
-### Advanced Configuration
+### Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- The frontend currently uses a proxy configured in `twitch-fe/package.json`
+- Update the proxy or API base URL if your backend runs on a different address
 
-### Deployment
+### Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Configure Spring Boot application settings in:
 
-### `npm run build` fails to minify
+- `twitch-be/src/main/resources/application.properties`
+- `twitch-be/src/main/resources/application.yml`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Typical local configuration includes:
+
+- database URL
+- database username / password
+- security / OAuth settings (if enabled)
+
+## Deployment
+
+- Containerized with Docker
+- Backend database hosted on AWS RDS (MySQL)
+- Application deployed on AWS App Runner
+
+## Design Notes
+
+- Backend uses layered structure (controller / service / repository) for maintainability
+- Backend integrates external Twitch APIs through OpenFeign
+- Frontend and backend are separated for clearer responsibilities and easier deployment changes
+- This repo is structured to be easy to demo, extend, and present in interviews
+
+## GitHub Upload (First Time)
+
+Run these commands in the repository root (`twitchfe`):
+
+```powershell
+git init
+git branch -M main
+git add .
+git commit -m "init: add twitch-fe and twitch-be"
+git remote add origin https://github.com/<your-username>/twitch-plus.git
+git push -u origin main
+```
+
+## Notes
+
+- `VS Code` and `IntelliJ` are development tools only; GitHub upload is handled by Git
+- Do not commit secrets such as database passwords, tokens, or private keys
+
