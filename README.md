@@ -1,24 +1,21 @@
 ﻿# Twitch+ | Personalized Twitch Resource Recommendation Platform
 
-Twitch+ is a full-stack Twitch resource recommendation platform with a React frontend (`twitch-fe`) and a Spring Boot backend (`twitch-be`).
-It supports searching and personalized ranking for Twitch streams, videos, and clips.
+Twitch+ is a full-stack recommendation platform for Twitch content discovery, built with React and Spring Boot. It supports searching Twitch streams, videos, and clips, and provides personalized ranking based on user preferences.
 
-## What This Project Is
+## Overview
 
-- A full-stack personalized recommendation platform for Twitch content discovery
-- Supports searching Twitch resources such as streams, videos, and clips
-- Provides backend APIs, user authentication, and favorites management
-- Organized as a single repository with separate frontend and backend modules
+This project is organized as a single repository with separate frontend and backend modules:
+- `twitch-fe`: React frontend
+- `twitch-be`: Spring Boot backend
 
-## What I Worked On
+## Highlights
 
-- Built a full-stack recommendation system using Java, Spring Boot, React, and MySQL
-- Implemented search and personalized ranking for Twitch streams, videos, and clips
-- Developed RESTful backend APIs with Spring Boot and integrated Twitch APIs using OpenFeign
+- Built a full-stack application using Java, Spring Boot, React, and MySQL
+- Implemented search and personalized ranking for Twitch resources (streams, videos, clips)
+- Developed RESTful APIs and integrated Twitch APIs using OpenFeign
 - Implemented authentication and authorization with Spring Security
-- Designed relational persistence for users and favorites using Spring Data JDBC and MySQL (AWS RDS)
-- Structured the project as a single repo (`twitch-fe` + `twitch-be`) for local development and deployment
-- Containerized and deployed the application using Docker and AWS App Runner
+- Designed relational persistence for users and favorites using Spring Data JDBC + MySQL (AWS RDS)
+- Containerized and deployed with Docker and AWS App Runner
 
 ## Tech Stack
 
@@ -38,18 +35,18 @@ It supports searching and personalized ranking for Twitch streams, videos, and c
 - Gradle
 - MySQL (AWS RDS)
 
-### Deployment / Infra
+### Infra / Deployment
 - Docker
 - AWS App Runner
 - AWS RDS
 
 ## Features
 
-- Search Twitch resources (streams, videos, and clips)
-- Personalized ranking / recommendation flow
+- Twitch resource search (streams, videos, clips)
+- Personalized ranking / recommendation
 - User authentication and authorization
-- Favorites management with relational persistence
-- Frontend-backend integration through REST APIs
+- Favorites management
+- Frontend-backend integration via REST APIs
 
 ## Project Structure
 
@@ -61,16 +58,9 @@ It supports searching and personalized ranking for Twitch streams, videos, and c
 └─ README.md
 ```
 
-## How To Run Locally
+## Run Locally
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/<your-username>/twitch-plus.git
-cd twitchfe
-```
-
-### 2. Run the frontend
+### Frontend
 
 ```bash
 cd twitch-fe
@@ -80,17 +70,15 @@ npm start
 
 Frontend default URL: `http://localhost:3000`
 
-### 3. Run the backend (Gradle)
+### Backend (Gradle)
 
 Windows:
-
 ```bash
 cd twitch-be
 .\gradlew.bat bootRun
 ```
 
 macOS / Linux:
-
 ```bash
 cd twitch-be
 ./gradlew bootRun
@@ -98,54 +86,21 @@ cd twitch-be
 
 Backend default URL: `http://localhost:8080`
 
-## Configuration Notes
+## Configuration
 
 ### Frontend
-
-- The frontend currently uses a proxy configured in `twitch-fe/package.json`
+- The frontend uses a proxy configured in `twitch-fe/package.json`
 - Update the proxy or API base URL if your backend runs on a different address
 
 ### Backend
-
 Configure Spring Boot application settings in:
-
 - `twitch-be/src/main/resources/application.properties`
 - `twitch-be/src/main/resources/application.yml`
 
-Typical local configuration includes:
-
-- database URL
-- database username / password
-- security / OAuth settings (if enabled)
+Typical local configuration includes database connection settings and security / OAuth settings.
 
 ## Deployment
 
-- Containerized with Docker
-- Backend database hosted on AWS RDS (MySQL)
-- Application deployed on AWS App Runner
-
-## Design Notes
-
-- Backend uses layered structure (controller / service / repository) for maintainability
-- Backend integrates external Twitch APIs through OpenFeign
-- Frontend and backend are separated for clearer responsibilities and easier deployment changes
-- This repo is structured to be easy to demo, extend, and present in interviews
-
-## GitHub Upload (First Time)
-
-Run these commands in the repository root (`twitchfe`):
-
-```powershell
-git init
-git branch -M main
-git add .
-git commit -m "init: add twitch-fe and twitch-be"
-git remote add origin https://github.com/<your-username>/twitch-plus.git
-git push -u origin main
-```
-
-## Notes
-
-- `VS Code` and `IntelliJ` are development tools only; GitHub upload is handled by Git
-- Do not commit secrets such as database passwords, tokens, or private keys
-
+- Dockerized application
+- MySQL hosted on AWS RDS
+- Deployed on AWS App Runner
